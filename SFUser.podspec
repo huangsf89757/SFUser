@@ -32,11 +32,23 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'SFUser/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'SFUser' => ['SFUser/Assets/*.png']
-  # }
+   s.resource_bundles = {
+     'SFUser' => ['SFUser/Assets/**/*']
+   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
+  
+  # --- 依赖 --- #
+  # UI
+  s.dependency 'SFUI',                        '~> 0.1.0'
+  # Basic
+  s.dependency 'SFBase',                      '~> 0.1.0'
+  s.dependency 'SFExtension',                 '~> 0.1.0'
+  # Server
+  s.dependency 'SFLogger',                    '~> 0.1.0'
+  # Third
+  s.dependency 'R.swift'
+  
 end

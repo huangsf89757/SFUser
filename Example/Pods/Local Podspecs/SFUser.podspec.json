@@ -18,5 +18,27 @@
   "platforms": {
     "ios": "14.0"
   },
-  "source_files": "SFUser/Classes/**/*"
+  "source_files": "SFUser/Classes/**/*",
+  "resource_bundles": {
+    "SFUser": [
+      "SFUser/Assets/**/*"
+    ]
+  },
+  "dependencies": {
+    "SFUI": [
+      "~> 0.1.0"
+    ],
+    "SFBase": [
+      "~> 0.1.0"
+    ],
+    "SFExtension": [
+      "~> 0.1.0"
+    ],
+    "SFLogger": [
+      "~> 0.1.0"
+    ],
+    "R.swift": [
+
+    ]
+  }
 }

@@ -8,11 +8,15 @@
 
 import UIKit
 
+import SFUser
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        let female = SFUser.R.image.gender.female()
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -1,5 +1,5 @@
 import XCTest
-import SFUser
+//import SFUser // FIXME
 
 class Tests: XCTestCase {
     
