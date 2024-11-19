@@ -13,7 +13,6 @@ PODS:
     - SwiftyBeaver
   - SFUI (0.1.0):
     - IQKeyboardManagerSwift (~> 6.5.16)
-    - R.swift
     - Reusable (~> 4.1.2)
     - SFBase (~> 0.1.0)
     - SFExtension (~> 0.1.0)
@@ -21,7 +20,6 @@ PODS:
     - SnapKit (~> 5.6.0)
     - SnapKitExtend (~> 1.1.0)
   - SFUser (0.1.0):
-    - R.swift
     - SFBase (~> 0.1.0)
     - SFExtension (~> 0.1.0)
     - SFLogger (~> 0.1.0)
@@ -69,8 +67,8 @@ SPEC CHECKSUMS:
   SFBase: 1eba5a746b2470d76b0fec3477288ebea87ebb53
   SFExtension: db5d207c8b9cb15d09d28858aec071d51050f3c5
   SFLogger: 32dc52852844a0ac9243948c00d64e02cc5a680a
-  SFUI: 73e685007dc8d78e591ceb1449270539b66c8b12
-  SFUser: d4b708afa3ef129545629fbed7757686b1ba2e5f
+  SFUI: 9b84518709b64a65be8289aba32d43ca48015229
+  SFUser: 5f3a452d44b4edfce31ec1a226ebb9f016319aeb
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SnapKitExtend: aa30cf37196195fae9c4354686cc7710184ebfcc
   SwiftyBeaver: 014b0c12065026b731bac80305294f27d63e27f6

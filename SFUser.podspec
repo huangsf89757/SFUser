@@ -48,7 +48,6 @@ TODO: Add long description of the pod here.
   s.dependency 'SFExtension',                 '~> 0.1.0'
   # Server
   s.dependency 'SFLogger',                    '~> 0.1.0'
-  # Third
-  s.dependency 'R.swift'
+  
   
 end
