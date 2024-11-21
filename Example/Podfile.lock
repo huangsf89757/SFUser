@@ -1,6 +1,5 @@
 PODS:
   - IQKeyboardManagerSwift (6.5.16)
-  - R.swift (7.6.0)
   - Reusable (4.1.2):
     - Reusable/Storyboard (= 4.1.2)
     - Reusable/View (= 4.1.2)
@@ -31,7 +30,6 @@ PODS:
   - Then (3.0.0)
 
 DEPENDENCIES:
-  - R.swift
   - SFBase (from `../../../Basic/SFBase/`)
   - SFExtension (from `../../../Basic/SFExtension/`)
   - SFLogger (from `../../../Server/SFLogger/`)
@@ -41,7 +39,6 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - IQKeyboardManagerSwift
-    - R.swift
     - Reusable
     - SnapKit
     - SnapKitExtend
@@ -62,7 +59,6 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   IQKeyboardManagerSwift: 12d89768845bb77b55cc092ecc2b1f9370f06b76
-  R.swift: 7ad49e349689e783973abbd7ce8d355690b924d1
   Reusable: 6bae6a5e8aa793c9c441db0213c863a64bce9136
   SFBase: 1eba5a746b2470d76b0fec3477288ebea87ebb53
   SFExtension: db5d207c8b9cb15d09d28858aec071d51050f3c5
@@ -74,6 +70,6 @@ SPEC CHECKSUMS:
   SwiftyBeaver: 014b0c12065026b731bac80305294f27d63e27f6
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: 0e7965cb4a5482c56f5453837952a597f04720f0
+PODFILE CHECKSUM: 38f6b91972604d2ea3b597191081ef07e499bbab
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.16.2
