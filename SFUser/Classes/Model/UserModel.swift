@@ -6,8 +6,8 @@
 //
 
 import Foundation
-// Basic
-import SFBase
+// Business
+import SFBusiness
 
 // MARK: - UserModel
 public class UserModel: SFLocalDatanable, SFRemoteDatanable {

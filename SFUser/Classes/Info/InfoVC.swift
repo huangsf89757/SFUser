@@ -14,7 +14,7 @@ import SFExtension
 import SFUI
 
 // MARK: - InfoVC
-class InfoVC: SFTableViewController {
+public class InfoVC: SFTableViewController {
     // MARK: data
     var items: [[InfoItem]] = [
         [.account],
@@ -24,16 +24,14 @@ class InfoVC: SFTableViewController {
     ]
     
     // MARK: init
-    convenience init() {
+    public convenience init() {
         self.init(style: .grouped)
     }
-    
     private override init(style: UITableView.Style) {
         super.init(style: style)
         setUp()
     }
-    
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = SFText.User.info
     }
@@ -50,13 +48,13 @@ class InfoVC: SFTableViewController {
 
 // MARK: - UITableViewDelegate, UITableViewDataSource
 extension InfoVC: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
+    public func numberOfSections(in tableView: UITableView) -> Int {
         return items.count
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items[section].count
     }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = items[indexPath.section][indexPath.row]
         if item == .avatar {
             let cell = tableView.dequeueReusableCell(for: indexPath, cellType: AvatarInfoCell.self)
@@ -68,19 +66,19 @@ extension InfoVC: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return nil
     }
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
     }
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return nil
     }
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
     }
 }

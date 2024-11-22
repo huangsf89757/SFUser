@@ -12,14 +12,16 @@ import SFBase
 import SFExtension
 // UI
 import SFUI
+// Business
+import SFBusiness
 
 // MARK: - SignVC
-class SignVC: SFScrollViewController {
+public class SignVC: SFScrollViewController {
     // MARK: block
     
     
     // MARK: life cycle
-    convenience init() {
+    public convenience init() {
         self.init(dir: .vertical)
     }
     
@@ -27,14 +29,14 @@ class SignVC: SFScrollViewController {
         super.init(dir: dir)
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         isHiddenNavBar = true
         customUI()
     }
     
     // MARK: ui
-    private lazy var logoImgView: SFImageView = {
+    public private(set) lazy var logoImgView: SFImageView = {
         return SFImageView().then { view in
             view.contentMode = .scaleAspectFit
             view.backgroundColor = SFColor.UI.content
@@ -43,7 +45,7 @@ class SignVC: SFScrollViewController {
             view.layer.masksToBounds = true
         }
     }()
-    private lazy var nameLabel: SFLabel = {
+    public private(set) lazy var nameLabel: SFLabel = {
         return SFLabel().then { view in
             view.font = .systemFont(ofSize: 17, weight: .bold)
             view.textColor = SFColor.UI.title
@@ -51,7 +53,7 @@ class SignVC: SFScrollViewController {
 //            view.text = R.string.localizable.name() // FIXME
         }
     }()
-    private lazy var slogenLabel: SFLabel = {
+    public private(set) lazy var slogenLabel: SFLabel = {
         return SFLabel().then { view in
             view.font = .systemFont(ofSize: 12, weight: .regular)
             view.textColor = SFColor.UI.subtitle
@@ -59,7 +61,7 @@ class SignVC: SFScrollViewController {
 //            view.text = R.string.localizable.slogen() // FIXME
         }
     }()
-    private lazy var modeView: SignModeView = {
+    private(set) lazy var modeView: SignModeView = {
         return SignModeView().then { view in
             view.didSelectedItemBlock = {
                 [weak self] modeView, index in
@@ -67,7 +69,7 @@ class SignVC: SFScrollViewController {
             }
         }
     }()
-    private lazy var pageView: SignPageView = {
+    private(set) lazy var pageView: SignPageView = {
         return SignPageView().then { view in
             view.pageDidChangedBlock = {
                 [weak self] pageView, index in
@@ -81,10 +83,10 @@ class SignVC: SFScrollViewController {
             }
         }
     }()
-    private lazy var agreementView: AgreementView = {
-        return AgreementView()
+    public private(set) lazy var agreementView: SFAgreementView = {
+        return SFAgreementView()
     }()
-    private lazy var signInBtn: SFButton = {
+    public private(set) lazy var signInBtn: SFButton = {
         return SFButton().then { view in
             view.backgroundColor = SFColor.UI.theme
             view.setTitleColor(SFColor.UI.whiteAlways, for: .normal)

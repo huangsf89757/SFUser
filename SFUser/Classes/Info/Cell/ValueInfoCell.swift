@@ -14,15 +14,15 @@ import SFExtension
 import SFUI
 
 // MARK: - ValueInfoCell
-class ValueInfoCell: InfoCell {
+public class ValueInfoCell: InfoCell {
     // MARK: ui
-     private lazy var valueLabel: SFLabel = {
+    public private(set) lazy var valueLabel: SFLabel = {
          return SFLabel().then { view in
              view.font = .systemFont(ofSize: 17, weight: .medium)
              view.textColor = SFColor.UI.title
          }
      }()
-     override func customUI() {
+    public override func customUI() {
          super.customUI()
          addSubview(valueLabel)
          

@@ -14,9 +14,9 @@ import SFExtension
 import SFUI
 
 // MARK: - InfoCell
-class InfoCell: SFTableViewCell {
+public class InfoCell: SFTableViewCell {
     // MARK: data
-    var item: InfoItem? {
+    public var item: InfoItem? {
         didSet {
             guard let item = item else { return }
             iconImgView.image = item.image
@@ -29,7 +29,7 @@ class InfoCell: SFTableViewCell {
     }
     
     // MARK: life cycle
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = SFColor.UI.background
         contentView.backgroundColor = SFColor.UI.background
@@ -38,24 +38,24 @@ class InfoCell: SFTableViewCell {
     }
     
     // MARK: ui
-    lazy var iconImgView: SFImageView = {
+    public private(set) lazy var iconImgView: SFImageView = {
         return SFImageView().then { view in
             view.contentMode = .scaleAspectFit
         }
     }()
-    lazy var titleLabel: SFLabel = {
+    public private(set) lazy var titleLabel: SFLabel = {
         return SFLabel().then { view in
             view.font = .systemFont(ofSize: 15, weight: .regular)
             view.textColor = SFColor.UI.title
         }
     }()
-    lazy var detailImgView: SFImageView = {
+    public private(set) lazy var detailImgView: SFImageView = {
         return SFImageView().then { view in
             view.contentMode = .scaleAspectFit
             view.image = SFImage.UI.detail
         }
     }()
-    func customUI() {
+    public func customUI() {
         addSubview(iconImgView)
         addSubview(titleLabel)
         addSubview(detailImgView)

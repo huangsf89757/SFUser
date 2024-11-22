@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-enum InfoItem {
+public enum InfoItem {
     case account
     
     case avatar

@@ -14,7 +14,7 @@ import SFExtension
 import SFUI
 
 // MARK: - AvatarInfoCell
-class AvatarInfoCell: InfoCell {
+public class AvatarInfoCell: InfoCell {
     // MARK: ui
     private lazy var avatarView: SFImageView = {
         return SFImageView().then { view in
@@ -24,7 +24,7 @@ class AvatarInfoCell: InfoCell {
             view.layer.masksToBounds = true
         }
     }()
-    override func customUI() {
+    public override func customUI() {
         super.customUI()
         addSubview(avatarView)
         avatarView.snp.makeConstraints { make in

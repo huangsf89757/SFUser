@@ -15,7 +15,7 @@ public enum Gender: Int {
     case male
     case female
     
-    var icon: UIImage? {
+    public var icon: UIImage? {
         switch self {
         case .unknown:
             return nil
@@ -26,7 +26,7 @@ public enum Gender: Int {
         }
     }
     
-    var text: String {
+    public var text: String {
         switch self {
         case .unknown:
             return SFText.User.gender_unknown
