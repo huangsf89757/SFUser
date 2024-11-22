@@ -86,7 +86,7 @@ public class SignVC: SFScrollViewController {
     public private(set) lazy var agreementView: SFAgreementView = {
         return SFAgreementView()
     }()
-    public private(set) lazy var signInBtn: SFButton = {
+    public private(set) lazy var signBtn: SFButton = {
         return SFButton().then { view in
             view.backgroundColor = SFColor.UI.theme
             view.setTitleColor(SFColor.UI.whiteAlways, for: .normal)
@@ -104,7 +104,7 @@ public class SignVC: SFScrollViewController {
         scrollView.contentView.addSubview(modeView)
         scrollView.contentView.addSubview(pageView)
         scrollView.contentView.addSubview(agreementView)
-        scrollView.contentView.addSubview(signInBtn)
+        scrollView.contentView.addSubview(signBtn)
         
         logoImgView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(50)
@@ -137,7 +137,7 @@ public class SignVC: SFScrollViewController {
             make.leading.greaterThanOrEqualToSuperview().offset(30)
             make.trailing.lessThanOrEqualToSuperview().offset(-30)
         }
-        signInBtn.snp.makeConstraints { make in
+        signBtn.snp.makeConstraints { make in
             make.top.equalTo(agreementView.snp.bottom).offset(10)
             make.leading.equalToSuperview().offset(30)
             make.trailing.equalToSuperview().offset(-30)
