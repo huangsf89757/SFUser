@@ -10,6 +10,8 @@ import UIKit
 // Basic
 import SFBase
 import SFExtension
+// UI
+import SFUI
 
 // MARK: - SFImage
 extension SFImage {

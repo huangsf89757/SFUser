@@ -40,7 +40,7 @@ public class SignVC: SFScrollViewController {
         return SFImageView().then { view in
             view.contentMode = .scaleAspectFit
             view.backgroundColor = SFColor.UI.content
-//            view.image = SFImage.UI.logo() // FIXME
+            view.image = SFImage.App.icon
             view.layer.cornerRadius = 8
             view.layer.masksToBounds = true
         }
@@ -50,7 +50,7 @@ public class SignVC: SFScrollViewController {
             view.font = .systemFont(ofSize: 17, weight: .bold)
             view.textColor = SFColor.UI.title
             view.textAlignment = .center
-//            view.text = R.string.localizable.name() // FIXME
+            view.text = SFText.App.name
         }
     }()
     public private(set) lazy var slogenLabel: SFLabel = {
@@ -58,7 +58,7 @@ public class SignVC: SFScrollViewController {
             view.font = .systemFont(ofSize: 12, weight: .regular)
             view.textColor = SFColor.UI.subtitle
             view.textAlignment = .center
-//            view.text = R.string.localizable.slogen() // FIXME
+            view.text = SFText.App.slogen
         }
     }()
     private(set) lazy var modeView: SignModeView = {
@@ -90,7 +90,7 @@ public class SignVC: SFScrollViewController {
         return SFButton().then { view in
             view.backgroundColor = SFColor.UI.theme
             view.setTitleColor(SFColor.UI.whiteAlways, for: .normal)
-//            view.setTitle(R.string.localizable.user_sign_in(), for: .normal) // FIXME
+            view.setTitle("登录", for: .normal) // FIXME
             view.titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
             view.layer.cornerRadius = 10
             view.layer.masksToBounds = true

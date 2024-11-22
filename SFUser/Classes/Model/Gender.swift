@@ -7,8 +7,8 @@
 
 import Foundation
 import UIKit
-// Basic
-import SFBase
+// UI
+import SFUI
 
 public enum Gender: Int {
     case unknown = 0
