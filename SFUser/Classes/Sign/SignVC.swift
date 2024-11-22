@@ -90,7 +90,7 @@ public class SignVC: SFScrollViewController {
         return SFButton().then { view in
             view.backgroundColor = SFColor.UI.theme
             view.setTitleColor(SFColor.UI.whiteAlways, for: .normal)
-            view.setTitle("登录", for: .normal) // FIXME
+            view.setTitle(SFText.User.sign_action_in, for: .normal) // FIXME
             view.titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
             view.layer.cornerRadius = 10
             view.layer.masksToBounds = true

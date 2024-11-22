@@ -26,6 +26,8 @@ extension SFText {
         public static var gender_male: String { text(name: "gender_male") }
         public static var gender_unknown: String { text(name: "gender_unknown") }
         public static var info: String { text(name: "info") }
+        public static var sign_action_in: String { text(name: "sign_action_in") }
+        public static var sign_action_out: String { text(name: "sign_action_out") }
         public static var info_account: String { text(name: "info_account") }
         public static var info_address: String { text(name: "info_address") }
         public static var info_avatar: String { text(name: "info_avatar") }
