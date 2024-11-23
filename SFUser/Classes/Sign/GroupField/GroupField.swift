@@ -14,9 +14,9 @@ import SFBase
 import SFUI
 
 // MARK: - GroupField
-class GroupField: SFView {
+public class GroupField: SFView {
     // MARK: life cycle
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = SFColor.UI.background
         layer.cornerRadius = 15

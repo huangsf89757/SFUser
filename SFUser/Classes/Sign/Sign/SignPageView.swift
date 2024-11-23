@@ -16,20 +16,20 @@ import SFUI
 import IQKeyboardManagerSwift
 
 // MARK: - SignPageView
-class SignPageView: SFScrollView {
+public class SignPageView: SFScrollView {
     // MARK: block
-    var pageDidChangedBlock: ((SignPageView, Int) -> ())?
-    var forgetPwdBlock: (()->())? {
+    public var pageDidChangedBlock: ((SignPageView, Int) -> ())?
+    public var forgetPwdBlock: (()->())? {
         didSet {
             pwdView.forgetPwdBlock = forgetPwdBlock
         }
     }
     
     // MARK: var
-    var curPageIndex: Int = 0
+    public internal(set) var curPageIndex: Int = 0
     
     // MARK: life cycle
-    convenience init() {
+    public convenience init() {
         self.init(dir: .horizontal)
     }
     
@@ -44,12 +44,12 @@ class SignPageView: SFScrollView {
     }
     
     // MARK: ui
-    private lazy var codeView: CodeSignView = {
-        return CodeSignView()
+    public private(set) lazy var codeView: CodeContentView = {
+        return CodeContentView()
     }()
     
-    private lazy var pwdView: PwdSignView = {
-        return PwdSignView()
+    public private(set) lazy var pwdView: PwdContentView = {
+        return PwdContentView()
     }()
     
     private func customUI() {
@@ -74,7 +74,7 @@ class SignPageView: SFScrollView {
 
 // MARK: - UIScrollViewDelegate
 extension SignPageView: UIScrollViewDelegate {
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    public func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let pageWidth = scrollView.frame.width
         let currentPage = scrollView.contentOffset.x / pageWidth
         let targetPage: Int
@@ -94,11 +94,11 @@ extension SignPageView: UIScrollViewDelegate {
         targetContentOffset.pointee.x = newTargetOffset
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         updatePageSelection(for: scrollView)
     }
     
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+    public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
         updatePageSelection(for: scrollView)
     }
     
@@ -111,7 +111,7 @@ extension SignPageView: UIScrollViewDelegate {
         }
     }
     
-    func changePage(to index: Int) {
+    internal func changePage(to index: Int) {
         let pageWidth = frame.width
         let newOffset = CGFloat(index) * pageWidth
         setContentOffset(CGPoint(x: newOffset, y: 0), animated: false)

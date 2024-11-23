@@ -1,5 +1,5 @@
 //
-//  PwdSignView.swift
+//  PwdContentView.swift
 //  SFUser
 //
 //  Created by hsf on 2024/11/19.
@@ -13,31 +13,31 @@ import SFBase
 // UI
 import SFUI
 
-// MARK: - PwdSignView
-class PwdSignView: SFView {
+// MARK: - PwdContentView
+public class PwdContentView: SFView {
     // MARK: block
-    var forgetPwdBlock: (()->())?
+    public var forgetPwdBlock: (()->())?
     
     // MARK: life cycle
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         customUI()
     }
     
     // MARK: ui
-    private lazy var field: AccountPwdField = {
+    public private(set) lazy var field: AccountPwdField = {
         return AccountPwdField()
     }()
-    private lazy var tipLabel: SFLabel = {
+    public private(set) lazy var tipLabel: SFLabel = {
         return SFLabel().then { view in
             view.font = .systemFont(ofSize: 12, weight: .regular)
             view.textColor = SFColor.UI.subtitle
-//            view.text = R.string.localizable.user_signIn_tip_pwd()
+            view.text = SFText.User.sign_tip_pwd
         }
     }()
-    private lazy var forgetPwdBtn: SFButton = {
+    public private(set) lazy var forgetPwdBtn: SFButton = {
         return SFButton().then { view in
-//            view.setTitle(R.string.localizable.user_signIn_action_forgetPwd(), for: .normal)
+            view.setTitle(SFText.User.sign_action_forgetPwd, for: .normal)
             view.setTitleColor(SFColor.UI.theme, for: .normal)
             view.titleLabel?.font = .systemFont(ofSize: 12, weight: .regular)
             view.addTarget(self, action: #selector(forgetPwdBtnClicked), for: .touchUpInside)
@@ -67,7 +67,7 @@ class PwdSignView: SFView {
 }
 
 // MARK: - action
-extension PwdSignView {
+extension PwdContentView {
     @objc private func forgetPwdBtnClicked() {
         forgetPwdBlock?()
     }

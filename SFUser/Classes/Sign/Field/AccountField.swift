@@ -14,23 +14,23 @@ import SFBase
 import SFUI
 
 // MARK: - AccountField
-class AccountField: SFView {
+public class AccountField: SFView {
     // MARK: life cycle
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         customUI()
     }
     
     // MARK: ui
-    private lazy var iconImgView: SFImageView = {
+    public private(set) lazy var iconImgView: SFImageView = {
         return SFImageView().then { view in
             view.contentMode = .scaleAspectFit
             view.image = SFImage.User.Sign.account
         }
     }()
-    private lazy var textField: SFTextField = {
+    public private(set) lazy var textField: SFTextField = {
         return SFTextField().then { view in
-//            view.placeholder = R.string.localizable.user_signIn_input_account_ph()
+            view.placeholder = SFText.User.sign_hint_account
             view.placeholderColor = SFColor.UI.placeholder
             view.clearButtonMode = .whileEditing
             view.font = .systemFont(ofSize: 15, weight: .regular)

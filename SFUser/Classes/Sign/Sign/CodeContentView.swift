@@ -1,5 +1,5 @@
 //
-//  CodeSignView.swift
+//  CodeContentView.swift
 //  SFUser
 //
 //  Created by hsf on 2024/11/19.
@@ -13,23 +13,23 @@ import SFBase
 // UI
 import SFUI
 
-// MARK: - CodeSignView
-class CodeSignView: SFView {
+// MARK: - CodeContentView
+public class CodeContentView: SFView {
     // MARK: life cycle
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         customUI()
     }
     
     // MARK: ui
-    private lazy var field: AccountCodeField = {
+    public private(set) lazy var field: AccountCodeField = {
         return AccountCodeField()
     }()
-    private lazy var tipLabel: SFLabel = {
+    public private(set) lazy var tipLabel: SFLabel = {
         return SFLabel().then { view in
             view.font = .systemFont(ofSize: 12, weight: .regular)
             view.textColor = SFColor.UI.subtitle
-//            view.text = R.string.localizable.user_signIn_tip_code()
+            view.text = SFText.User.sign_tip_code
         }
     }()
     

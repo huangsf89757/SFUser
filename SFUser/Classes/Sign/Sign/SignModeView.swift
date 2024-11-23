@@ -13,27 +13,10 @@ import SFBase
 // UI
 import SFUI
 
-// MARK: - SignMode
-/// 登录方式
-enum SignMode: CaseIterable {
-    case code   // 验证码
-    case pwd    // 密码
-    
-    /// 描述
-    var text: String {
-        switch self {
-        case .code:
-            return SFText.User.sign_mode_code
-        case .pwd:
-            return SFText.User.sign_mode_pwd
-        }
-    }
-}
-
 // MARK: - SignModeView
-class SignModeView: SFSegmentView {
+public class SignModeView: SFSegmentView {
     // MARK: life cycle
-    convenience init() {
+    public convenience init() {
         let titles = SignMode.allCases.map { mode in
             mode.text
         }

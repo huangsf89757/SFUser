@@ -14,33 +14,33 @@ import SFBase
 import SFUI
 
 // MARK: - CodeField
-class CodeField: SFView {
+public class CodeField: SFView {
     // MARK: life cycle
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         customUI()
     }
     
     // MARK: ui
-    private lazy var iconImgView: SFImageView = {
+    public private(set) lazy var iconImgView: SFImageView = {
         return SFImageView().then { view in
             view.contentMode = .scaleAspectFit
             view.image = SFImage.User.Sign.code
         }
     }()
-    private lazy var textField: SFTextField = {
+    public private(set) lazy var textField: SFTextField = {
         return SFTextField().then { view in
-//            view.placeholder = R.string.localizable.user_signIn_input_code_ph()
+            view.placeholder = SFText.User.sign_hint_code
             view.placeholderColor = SFColor.UI.placeholder
             view.clearButtonMode = .whileEditing
             view.font = .systemFont(ofSize: 15, weight: .regular)
         }
     }()
-    private lazy var sendCodeBtn: SFButton = {
+    public private(set) lazy var sendCodeBtn: SFButton = {
         return SFButton().then { view in
             view.setTitleColor(SFColor.UI.theme, for: .normal)
             view.setTitleColor(SFColor.UI.placeholder, for: .selected)
-//            view.setTitle(R.string.localizable.user_signIn_action_sendCode(), for: .normal)
+            view.setTitle(SFText.User.sign_action_sendCode, for: .normal)
             view.titleLabel?.font = .systemFont(ofSize: 15, weight: .regular)
             view.addTarget(self, action: #selector(sendCodeBtnClicked), for: .touchUpInside)
         }

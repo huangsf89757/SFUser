@@ -14,37 +14,37 @@ import SFBase
 import SFUI
 
 // MARK: - AccountCodePwd2Field
-class AccountCodePwd2Field: GroupField {
+public class AccountCodePwd2Field: GroupField {
     // MARK: life cycle
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         customUI()
     }
     
     // MARK: ui
-    private lazy var accountField: AccountField = {
+    public private(set) lazy var accountField: AccountField = {
         return AccountField()
     }()
-    private lazy var codeField: CodeField = {
+    public private(set) lazy var codeField: CodeField = {
         return CodeField()
     }()
-    private lazy var pwdField: PwdField = {
+    public private(set) lazy var pwdField: PwdField = {
         return PwdField()
     }()
-    private lazy var repwdField: PwdField = {
+    public private(set) lazy var repwdField: PwdField = {
         return PwdField()
     }()
-    private lazy var dividerView1: SFView = {
+    public private(set) lazy var dividerView1: SFView = {
         return SFView().then { view in
             view.backgroundColor = SFColor.UI.divider
         }
     }()
-    private lazy var dividerView2: SFView = {
+    public private(set) lazy var dividerView2: SFView = {
         return SFView().then { view in
             view.backgroundColor = SFColor.UI.divider
         }
     }()
-    private lazy var dividerView3: SFView = {
+    public private(set) lazy var dividerView3: SFView = {
         return SFView().then { view in
             view.backgroundColor = SFColor.UI.divider
         }

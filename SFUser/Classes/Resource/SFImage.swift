@@ -41,8 +41,8 @@ extension SFImage {
             public static var account: UIImage? { image(name: "sign/account") }
             public static var code: UIImage? { image(name: "sign/code") }
             public struct Eye {
-                public static var close: UIImage? { image(name: "eye/close") }
-                public static var open: UIImage? { image(name: "eye/open") }
+                public static var close: UIImage? { image(name: "sign/eye/close") }
+                public static var open: UIImage? { image(name: "sign/eye/open") }
             }
             public static var pwd: UIImage? { image(name: "sign/pwd") }
         }

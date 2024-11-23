@@ -14,21 +14,21 @@ import SFBase
 import SFUI
 
 // MARK: - AccountCodeField
-class AccountCodeField: GroupField {
+public class AccountCodeField: GroupField {
     // MARK: life cycle
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         customUI()
     }
     
     // MARK: ui
-    private lazy var accountField: AccountField = {
+    public private(set) lazy var accountField: AccountField = {
         return AccountField()
     }()
-    private lazy var codeField: CodeField = {
+    public private(set) lazy var codeField: CodeField = {
         return CodeField()
     }()
-    private lazy var dividerView: SFView = {
+    public private(set) lazy var dividerView: SFView = {
         return SFView().then { view in
             view.backgroundColor = SFColor.UI.divider
         }

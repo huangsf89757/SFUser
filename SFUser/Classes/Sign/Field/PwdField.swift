@@ -14,29 +14,29 @@ import SFBase
 import SFUI
 
 // MARK: - PwdField
-class PwdField: SFView {
+public class PwdField: SFView {
     // MARK: life cycle
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         customUI()
     }
     
     // MARK: ui
-    private lazy var iconImgView: SFImageView = {
+    public private(set) lazy var iconImgView: SFImageView = {
         return SFImageView().then { view in
             view.contentMode = .scaleAspectFit
             view.image = SFImage.User.Sign.pwd
         }
     }()
-    private lazy var textField: SFTextField = {
+    public private(set) lazy var textField: SFTextField = {
         return SFTextField().then { view in
-//            view.placeholder = R.string.localizable.user_signIn_input_pwd_ph()
+            view.placeholder = SFText.User.sign_hint_pwd
             view.placeholderColor = SFColor.UI.placeholder
             view.clearButtonMode = .whileEditing
             view.font = .systemFont(ofSize: 15, weight: .regular)
         }
     }()
-    private lazy var eyeBtn: SFButton = {
+    public private(set) lazy var eyeBtn: SFButton = {
         return SFButton().then { view in
             view.setImage(SFImage.User.Sign.Eye.close, for: .normal)
             view.setImage(SFImage.User.Sign.Eye.open, for: .selected)

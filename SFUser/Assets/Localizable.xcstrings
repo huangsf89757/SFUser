@@ -1,6 +1,30 @@
 {
   "sourceLanguage" : "zh-Hans",
   "strings" : {
+    "forget" : {
+      "comment" : "找回密码",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "忘记密码"
+          }
+        }
+      }
+    },
+    "forget_reset" : {
+      "comment" : "重置密码",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重置密码"
+          }
+        }
+      }
+    },
     "gender" : {
       "comment" : "性别",
       "extractionState" : "manual",
@@ -187,6 +211,18 @@
         }
       }
     },
+    "sign_action_forgetPwd" : {
+      "comment" : "忘记密码？",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "忘记密码？"
+          }
+        }
+      }
+    },
     "sign_action_in" : {
       "comment" : "登录",
       "extractionState" : "manual",
@@ -219,6 +255,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "登出"
+          }
+        }
+      }
+    },
+    "sign_action_sendCode" : {
+      "comment" : "发送验证码",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "发送验证码"
+          }
+        }
+      }
+    },
+    "sign_countdown" : {
+      "comment" : "%1$@秒",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@秒"
           }
         }
       }
@@ -357,6 +417,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "密码登录"
+          }
+        }
+      }
+    },
+    "sign_tip_code" : {
+      "comment" : "未注册的账号将自动注册并登录",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未注册的账号将自动注册并登录"
+          }
+        }
+      }
+    },
+    "sign_tip_pwd" : {
+      "comment" : "请使用已注册的账号登录",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请使用已注册的账号登录"
           }
         }
       }

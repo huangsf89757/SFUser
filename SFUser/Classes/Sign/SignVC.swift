@@ -55,9 +55,8 @@ public class SignVC: SFScrollViewController {
             }
             view.forgetPwdBlock = {
                 [weak self] in
-                // FIXME
-//                let vc = SFPwdFindbackVC()
-//                self?.navigationController?.pushViewController(vc, animated: true)
+                let vc = ForgetPwdVC()
+                self?.navigationController?.pushViewController(vc, animated: true)
             }
         }
     }()
@@ -83,7 +82,7 @@ public class SignVC: SFScrollViewController {
         scrollView.contentView.addSubview(signBtn)
         
         logoView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(80)
+            make.top.equalToSuperview().offset(100)
             make.leading.equalToSuperview().offset(50)
             make.trailing.equalToSuperview().offset(-50)
         }

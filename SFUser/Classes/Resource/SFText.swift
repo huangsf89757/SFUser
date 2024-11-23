@@ -28,6 +28,8 @@ extension SFText {
         public static var info: String { text(name: "info") }
         public static var sign_action_in: String { text(name: "sign_action_in") }
         public static var sign_action_out: String { text(name: "sign_action_out") }
+        public static var sign_action_forgetPwd: String { text(name: "sign_action_forgetPwd") }
+        public static var sign_action_sendCode: String { text(name: "sign_action_sendCode") }
         public static var info_account: String { text(name: "info_account") }
         public static var info_address: String { text(name: "info_address") }
         public static var info_avatar: String { text(name: "info_avatar") }
@@ -48,6 +50,11 @@ extension SFText {
         public static var sign_hint_repwd: String { text(name: "sign_hint_repwd") }
         public static var sign_mode_code: String { text(name: "sign_mode_code") }
         public static var sign_mode_pwd: String { text(name: "sign_mode_pwd") }
+        public static var sign_tip_code: String { text(name: "sign_tip_code") }
+        public static var sign_tip_pwd: String { text(name: "sign_tip_pwd") }
+        public static var sign_countdown: String { text(name: "sign_countdown") }
+        public static var forget: String { text(name: "forget") }
+        public static var forget_reset: String { text(name: "forget_reset") }
         
     }
 }
