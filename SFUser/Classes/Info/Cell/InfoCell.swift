@@ -52,7 +52,7 @@ public class InfoCell: SFTableViewCell {
     public private(set) lazy var detailImgView: SFImageView = {
         return SFImageView().then { view in
             view.contentMode = .scaleAspectFit
-            view.image = SFImage.UI.detail
+            view.image = SFImage.UI.Com.detail
         }
     }()
     public func customUI() {
