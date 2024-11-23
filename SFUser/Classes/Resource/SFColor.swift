@@ -16,7 +16,7 @@ import SFUI
 // MARK: - SFColor
 extension SFColor {
     public struct User {
-        public static var bundle = SFLibUser.bundle
+        public static var bundle = SFUserLib.bundle
         private static func color(name: String) -> UIColor? {
             UIColor.sf.color(name: name, bundle: Self.bundle)
         }

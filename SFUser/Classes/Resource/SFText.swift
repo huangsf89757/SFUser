@@ -16,7 +16,7 @@ import SFUI
 // MARK: - SFText
 extension SFText {
     public struct User {
-        public static var bundle = SFLibUser.bundle
+        public static var bundle = SFUserLib.bundle
         private static func text(name: String) -> String {
             NSLocalizedString(name, bundle: Self.bundle ?? .main, comment: name)
         }
