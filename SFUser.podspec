@@ -44,8 +44,8 @@ TODO: Add long description of the pod here.
   # UI
   s.dependency 'SFUI',                        '~> 0.1.0'
   # Basic
-  s.dependency 'SFBase',                      '~> 0.1.0'
   s.dependency 'SFExtension',                 '~> 0.1.0'
+  s.dependency 'SFBase',                      '~> 0.1.0'
   # Business
   s.dependency 'SFBusiness',                  '~> 0.1.0'
   # Server
