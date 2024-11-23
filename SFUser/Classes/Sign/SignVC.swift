@@ -36,30 +36,8 @@ public class SignVC: SFScrollViewController {
     }
     
     // MARK: ui
-    public private(set) lazy var logoImgView: SFImageView = {
-        return SFImageView().then { view in
-            view.contentMode = .scaleAspectFit
-            view.backgroundColor = SFColor.UI.content
-            view.image = SFImage.App.icon
-            view.layer.cornerRadius = 8
-            view.layer.masksToBounds = true
-        }
-    }()
-    public private(set) lazy var nameLabel: SFLabel = {
-        return SFLabel().then { view in
-            view.font = .systemFont(ofSize: 17, weight: .bold)
-            view.textColor = SFColor.UI.title
-            view.textAlignment = .center
-            view.text = SFText.App.name
-        }
-    }()
-    public private(set) lazy var slogenLabel: SFLabel = {
-        return SFLabel().then { view in
-            view.font = .systemFont(ofSize: 12, weight: .regular)
-            view.textColor = SFColor.UI.subtitle
-            view.textAlignment = .center
-            view.text = SFText.App.slogen
-        }
+    public private(set) lazy var logoView: SFLogoView = {
+        return SFLogoView()
     }()
     private(set) lazy var modeView: SignModeView = {
         return SignModeView().then { view in
@@ -98,31 +76,19 @@ public class SignVC: SFScrollViewController {
     }()
     
     private func customUI() {
-        scrollView.contentView.addSubview(logoImgView)
-        scrollView.contentView.addSubview(nameLabel)
-        scrollView.contentView.addSubview(slogenLabel)
+        scrollView.contentView.addSubview(logoView)
         scrollView.contentView.addSubview(modeView)
         scrollView.contentView.addSubview(pageView)
         scrollView.contentView.addSubview(agreementView)
         scrollView.contentView.addSubview(signBtn)
         
-        logoImgView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(50)
-            make.centerX.equalToSuperview()
-            make.size.equalTo(CGSize(width: 80, height: 80))
-        }
-        nameLabel.snp.makeConstraints { make in
-            make.top.equalTo(logoImgView.snp.bottom).offset(10)
-            make.leading.equalToSuperview().offset(30)
-            make.trailing.equalToSuperview().offset(-30)
-        }
-        slogenLabel.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(8)
-            make.leading.equalToSuperview().offset(30)
-            make.trailing.equalToSuperview().offset(-30)
+        logoView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(80)
+            make.leading.equalToSuperview().offset(50)
+            make.trailing.equalToSuperview().offset(-50)
         }
         modeView.snp.makeConstraints { make in
-            make.top.equalTo(slogenLabel.snp.bottom).offset(50)
+            make.top.equalTo(logoView.snp.bottom).offset(50)
             make.leading.equalToSuperview().offset(30)
             make.trailing.equalToSuperview().offset(-30)
         }
