@@ -11,19 +11,19 @@ import SFBusiness
 
 // MARK: - UserModel
 public class UserModel: SFLocalDatanable, SFRemoteDatanable {
-    // MARK: SFLocalDatanable
-    public var orderL: Int = 0
-    public var idL: String = ""
-    public var createTimeL: String = ""
+    // MARK: Local
+    public var orderL: Int? = 0
+    public var idL: String? = ""
+    public var createTimeL: String? = ""
     public var updateTimeL: String?
     
-    // MARK: SFRemoteDatanable
-    public var orderR: Int = 0
-    public var idR: String = ""
-    public var createTimeR: String = ""
+    // MARK: Remote
+    public var orderR: Int? = 0
+    public var idR: String? = ""
+    public var createTimeR: String? = ""
     public var updateTimeR: String?
         
-    // MARK: UserModel
+    // MARK: User
     // # 账号信息
     /// uid
     public var uid: String = ""
