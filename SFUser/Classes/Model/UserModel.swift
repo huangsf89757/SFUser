@@ -10,7 +10,7 @@ import Foundation
 import SFBusiness
 
 // MARK: - UserModel
-public class UserModel: SFLocalDatanable, SFRemoteDatanable {
+public class UserModel {
     // MARK: Local
     public var orderL: Int? = 0
     public var idL: String? = ""
