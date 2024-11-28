@@ -18,7 +18,7 @@ public class GroupField: SFView {
     // MARK: life cycle
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = SFColor.UI.background
+        backgroundColor = SFColor.UI.content
         layer.cornerRadius = 15
         layer.masksToBounds = true
     }

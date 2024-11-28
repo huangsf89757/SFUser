@@ -8,31 +8,27 @@
 import Foundation
 // Business
 import SFBusiness
+// Third
+import WCDBSwift
 
 // MARK: - UserModel
-public class UserModel {
-    // MARK: Local
-    public var orderL: Int? = 0
-    public var idL: String? = ""
-    public var createTimeL: String? = ""
-    public var updateTimeL: String?
+open class UserModel: SFRemoteDataModel {
     
-    // MARK: Remote
-    public var orderR: Int? = 0
-    public var idR: String? = ""
-    public var createTimeR: String? = ""
-    public var updateTimeR: String?
-        
-    // MARK: User
+    /// 当前登录的用户
+    public static var current: UserModel?
+    
+    // MARK: var
+    /// 静态表名
+    open override class var tableName: String {
+        return "user"
+    }
     // # 账号信息
     /// uid
-    public var uid: String = ""
+    public var uid: String?
     /// account
-    public var account: String = ""
+    public var account: String?
     
     // # 基础信息
-    /// 头像
-    public var avatarUrl: String?
     /// 昵称
     public var nickname: String?
     /// 性别
@@ -45,6 +41,8 @@ public class UserModel {
             gender = newValue.rawValue
         }
     }
+    /// 头像
+    public var avatar: String?
     /// 座右铭
     public var motto: String?
     
@@ -60,4 +58,43 @@ public class UserModel {
     public var birthday: String?
     /// 所在地
     public var address: String?
+    
+    /// CodingKeys
+    public enum CodingKeys: String, CodingTableKey {
+        public typealias Root = SFRemoteDataModel
+        
+        case orderL
+        case idL
+        case createTimeL
+        case updateTimeL
+        
+        case orderR
+        case idR
+        case createTimeR
+        case updateTimeR
+        
+        case uid
+        case account
+        case nickname
+        case gender
+        case avatar
+        case motto
+        case phone
+        case email
+        case birthday
+        case address
+        
+        public static let objectRelationalMapping = TableBinding(CodingKeys.self) {
+            BindColumnConstraint(orderL, isPrimary: true, isAutoIncrement: true)
+            BindColumnConstraint(idL, isNotNull: true, isUnique: true)
+        }
+    }
+    
+    // MARK: life cycle
+    public override init() {
+        super.init()
+    }
+    public required init(from decoder: Decoder) throws {
+        fatalError("init(from:) has not been implemented")
+    }
 }
