@@ -15,11 +15,11 @@ import WCDBSwift
 
 extension SFDatabase {
     /// user数据库
-    public static var userDb: Database? {
-        guard let currentUser = UserModel.current else { return nil }
-        guard let uid = currentUser.uid else { return nil }
-        return getUserDb(with: uid)
-    }
+//    public static var userDb: Database? {
+//        guard let currentUser = UserModel.current else { return nil }
+//        guard let uid = currentUser.uid else { return nil }
+//        return getUserDb(with: uid)
+//    }
     public static func getUserDb(with uid: String) -> Database? {
         do {
             let documentsDirectory = try FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!

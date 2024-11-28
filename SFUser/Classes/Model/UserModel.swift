@@ -8,93 +8,52 @@
 import Foundation
 // Business
 import SFBusiness
-// Third
-import WCDBSwift
 
-// MARK: - UserModel
-open class UserModel: SFRemoteDataModel {
-    
-    /// 当前登录的用户
-    public static var current: UserModel?
-    
+// MARK: - UserDatanable
+public protocol UserDatanable: SFLocalDatanable, SFRemoteDatanable {
     // MARK: var
-    /// 静态表名
-    open override class var tableName: String {
-        return "user"
-    }
+    /// 当前登录的用户
+    static var current: UserDatanable? {get set}
+    
     // # 账号信息
     /// uid
-    public var uid: String?
+    var uid: String? {get set}
     /// account
-    public var account: String?
+    var account: String? {get set}
     
     // # 基础信息
     /// 昵称
-    public var nickname: String?
+    var nickname: String? {get set}
     /// 性别
-    public var gender: Int = 0
-    public var genderEnum: Gender {
-        get {
-            Gender(rawValue: gender) ?? .unknown
-        }
-        set {
-            gender = newValue.rawValue
-        }
-    }
+    var gender: Int? {get set}
+    
     /// 头像
-    public var avatar: String?
+    var avatar: String? {get set}
     /// 座右铭
-    public var motto: String?
+    var motto: String? {get set}
     
     // # 绑定信息
     /// 手机号
-    public var phone: String?
+    var phone: String? {get set}
     /// 邮箱号
-    public var email: String?
+    var email: String? {get set}
     
     // # 附加信息
     /// 出生日期
     /// yyyy/MM/dd
-    public var birthday: String?
+    var birthday: String? {get set}
     /// 所在地
-    public var address: String?
+    var address: String? {get set}
     
-    /// CodingKeys
-    public enum CodingKeys: String, CodingTableKey {
-        public typealias Root = SFRemoteDataModel
-        
-        case orderL
-        case idL
-        case createTimeL
-        case updateTimeL
-        
-        case orderR
-        case idR
-        case createTimeR
-        case updateTimeR
-        
-        case uid
-        case account
-        case nickname
-        case gender
-        case avatar
-        case motto
-        case phone
-        case email
-        case birthday
-        case address
-        
-        public static let objectRelationalMapping = TableBinding(CodingKeys.self) {
-            BindColumnConstraint(orderL, isPrimary: true, isAutoIncrement: true)
-            BindColumnConstraint(idL, isNotNull: true, isUnique: true)
+}
+
+extension UserDatanable {
+    var genderEnum: Gender {
+        get {
+            Gender(rawValue: gender ?? 0) ?? .unknown
         }
-    }
-    
-    // MARK: life cycle
-    public override init() {
-        super.init()
-    }
-    public required init(from decoder: Decoder) throws {
-        fatalError("init(from:) has not been implemented")
+        set {
+            gender = newValue.rawValue
+        }
     }
 }
