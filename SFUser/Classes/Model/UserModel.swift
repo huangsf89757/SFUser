@@ -12,14 +12,13 @@ import SFBusiness
 // MARK: - UserDatanable
 public protocol UserDatanable: SFLocalDatanable, SFRemoteDatanable {
     // MARK: var
-    /// 当前登录的用户
-    static var current: UserDatanable? {get set}
-    
     // # 账号信息
     /// uid
     var uid: String? {get set}
     /// account
     var account: String? {get set}
+    /// 活跃的
+    var isActive: Bool? {get set}
     
     // # 基础信息
     /// 昵称
