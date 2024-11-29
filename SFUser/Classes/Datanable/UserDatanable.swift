@@ -17,6 +17,8 @@ public protocol UserDatanable: SFLocalDatanable, SFRemoteDatanable {
     var uid: String? {get set}
     /// account
     var account: String? {get set}
+    /// pwd
+    var pwd: String? {get set}
     /// 活跃的
     var isActive: Bool? {get set}
     

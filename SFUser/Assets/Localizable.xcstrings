@@ -385,6 +385,18 @@
         }
       }
     },
+    "sign_hint_pwd_format" : {
+      "comment" : "密码格式必须包含大小写字母和数字的组合，长度在8-16之间，不能使用特殊字符",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "密码格式必须包含大小写字母和数字的组合，长度在8-16之间，不能使用特殊字符"
+          }
+        }
+      }
+    },
     "sign_hint_repwd" : {
       "comment" : "请确认密码",
       "extractionState" : "manual",

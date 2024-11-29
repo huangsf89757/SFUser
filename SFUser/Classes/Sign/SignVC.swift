@@ -120,11 +120,46 @@ extension SignVC {
     @objc private func signBtnAction() {
         switch mode {
         case .code:
-            let account = pageView.codeView.field.accountField.textField.text
-            let code = pageView.codeView.field.codeField.textField.text
-            if 
+            SFToast.show("开发中")
+//            let account = pageView.codeView.field.accountField.textField.text ?? ""
+//            let code = pageView.codeView.field.codeField.textField.text ?? ""
+//            if account.isEmpty {
+//                SFToast.show(SFText.User.sign_hint_account)
+//                return
+//            }
+//            if account.sf.isRegex(type: .phone) {
+//                
+//            }
+//            else if account.sf.isRegex(type: .email) {
+//                
+//            }
+//            else {
+//                
+//            }
         case .pwd:
-            <#code#>
+            let account = pageView.pwdView.field.accountField.textField.text ?? ""
+            let pwd = pageView.pwdView.field.pwdField.textField.text ?? ""
+            if account.isEmpty {
+                SFToast.show(SFText.User.sign_hint_account)
+                return
+            }
+            if pwd.isEmpty {
+                SFToast.show(SFText.User.sign_hint_pwd)
+                return
+            }
+            guard pwd.sf.isRegex(type: .password) else {
+                SFToast.show(SFText.User.sign_hint_pwd_format)
+                return
+            }
+            if account.sf.isRegex(type: .phone) {
+                
+            }
+            else if account.sf.isRegex(type: .email) {
+                
+            }
+            else {
+                
+            }
         }
     }
 }

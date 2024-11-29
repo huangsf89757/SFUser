@@ -47,6 +47,7 @@ extension SFText {
         public static var sign_hint_code: String { text(name: "sign_hint_code") }
         public static var sign_hint_pwd: String { text(name: "sign_hint_pwd") }
         public static var sign_hint_pwd_diff: String { text(name: "sign_hint_pwd_diff") }
+        public static var sign_hint_pwd_format: String { text(name: "sign_hint_pwd_format") }
         public static var sign_hint_repwd: String { text(name: "sign_hint_repwd") }
         public static var sign_mode_code: String { text(name: "sign_mode_code") }
         public static var sign_mode_pwd: String { text(name: "sign_mode_pwd") }
