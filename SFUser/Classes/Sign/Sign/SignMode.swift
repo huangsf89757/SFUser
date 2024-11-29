@@ -15,9 +15,9 @@ import SFUI
 
 // MARK: - SignMode
 /// 登录方式
-public enum SignMode: CaseIterable {
-    case code   // 验证码
-    case pwd    // 密码
+public enum SignMode: Int, CaseIterable {
+    case code = 0   // 验证码
+    case pwd        // 密码
     
     /// 描述
     public var text: String {

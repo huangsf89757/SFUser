@@ -18,17 +18,18 @@ import SFBusiness
 // MARK: - SignVC
 public class SignVC: SFScrollViewController {
     // MARK: block
+    public var signBlock: (() -> ())?
     
+    // MARK: var
+    public private(set) var mode: SignMode = .code
     
     // MARK: life cycle
     public convenience init() {
         self.init(dir: .vertical)
     }
-    
     private override init(dir: SFScrollView.Direction) {
         super.init(dir: dir)
     }
-    
     public override func viewDidLoad() {
         super.viewDidLoad()
         isHiddenNavBar = true
@@ -44,6 +45,7 @@ public class SignVC: SFScrollViewController {
             view.didSelectedItemBlock = {
                 [weak self] modeView, index in
                 self?.pageView.changePage(to: index)
+                self?.mode = SignMode(rawValue: index) ?? .code
             }
         }
     }()
@@ -52,6 +54,7 @@ public class SignVC: SFScrollViewController {
             view.pageDidChangedBlock = {
                 [weak self] pageView, index in
                 self?.modeView.select(index: index, animated: true)
+                self?.mode = SignMode(rawValue: index) ?? .code
             }
             view.forgetPwdBlock = {
                 [weak self] in
@@ -67,13 +70,13 @@ public class SignVC: SFScrollViewController {
         return SFButton().then { view in
             view.backgroundColor = SFColor.UI.theme
             view.setTitleColor(SFColor.UI.whiteAlways, for: .normal)
-            view.setTitle(SFText.User.sign_action_in, for: .normal) // FIXME
+            view.setTitle(SFText.User.sign_action_in, for: .normal)
             view.titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
             view.layer.cornerRadius = 10
             view.layer.masksToBounds = true
+            view.addTarget(self, action: #selector(signBtnAction), for: .touchUpInside)
         }
     }()
-    
     private func customUI() {
         scrollView.contentView.addSubview(logoView)
         scrollView.contentView.addSubview(modeView)
@@ -108,6 +111,20 @@ public class SignVC: SFScrollViewController {
             make.trailing.equalToSuperview().offset(-30)
             make.height.equalTo(50)
             make.bottom.lessThanOrEqualToSuperview().offset(-100)
+        }
+    }
+}
+
+// MARK: - Action
+extension SignVC {
+    @objc private func signBtnAction() {
+        switch mode {
+        case .code:
+            let account = pageView.codeView.field.accountField.textField.text
+            let code = pageView.codeView.field.codeField.textField.text
+            if 
+        case .pwd:
+            <#code#>
         }
     }
 }
