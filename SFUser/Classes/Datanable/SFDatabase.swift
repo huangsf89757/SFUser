@@ -2,10 +2,13 @@
 //  SFDatabase.swift
 //  SFUser
 //
-//  Created by hsf on 2024/11/28.
+//  Created by hsf on 2024/11/30.
 //
 
 import Foundation
+// Basic
+import SFExtension
+import SFBase
 // Business
 import SFBusiness
 // Server
@@ -13,13 +16,27 @@ import SFLogger
 // Third
 import WCDBSwift
 
-extension SFDatabase {
-    public static func getUserDb(with uid: String) -> Database? {
+// MARK: - UserDatanable
+extension UserDatanable {
+    /// 客户端user数据库
+    public var clientDb: Database? {
+        return getDb(port: .client)
+    }
+    /// 客户端user数据库
+    public var serverDb: Database? {
+        return getDb(port: .server)
+    }
+    /// 获取user数据库
+    public func getDb(port: SFPort) -> Database? {
+        guard let uid = uid else { return nil }
         do {
             let documentsDirectory = try FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-            let userDirectory = documentsDirectory.appendingPathComponent(uid)
-            let databaseURL = userDirectory.appendingPathComponent("data.db")
-            return try Database(at: databaseURL)
+            let environmentUrl = documentsDirectory.appendingPathComponent(SFEnvironment.cur.path)
+            let portUrl = environmentUrl.appendingPathComponent(port.path)
+            let userUrl = environmentUrl.appendingPathComponent(uid)
+            let dataURL = portUrl.appendingPathComponent("data.db")
+            let db = try Database(withFileURL: dataURL)
+            return db
         } catch {
             SFDbLogger.dbError(type: .none, msgs: "获取userDb", "失败", error.localizedDescription)
             return nil

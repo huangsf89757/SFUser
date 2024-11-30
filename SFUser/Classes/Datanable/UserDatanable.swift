@@ -6,8 +6,13 @@
 //
 
 import Foundation
+// Basic
+import SFExtension
+import SFBase
 // Business
 import SFBusiness
+// Third
+import WCDBSwift
 
 // MARK: - UserDatanable
 public protocol UserDatanable: SFLocalDatanable, SFRemoteDatanable {
@@ -47,9 +52,9 @@ public protocol UserDatanable: SFLocalDatanable, SFRemoteDatanable {
     var address: String? {get set}
     
 }
-
+ 
 extension UserDatanable {
-    var genderEnum: Gender {
+    public var genderEnum: Gender {
         get {
             Gender(rawValue: gender ?? 0) ?? .unknown
         }
@@ -58,3 +63,4 @@ extension UserDatanable {
         }
     }
 }
+ 
