@@ -35,10 +35,10 @@ extension UserDatanable {
             let portUrl = environmentUrl.appendingPathComponent(port.path)
             let userUrl = environmentUrl.appendingPathComponent(uid)
             let dataURL = portUrl.appendingPathComponent("data.db")
-            let db = try Database(withFileURL: dataURL)
+            let db = try Database(at: dataURL)
             return db
         } catch {
-            SFDbLogger.dbError(type: .none, msgs: "获取userDb", "失败", error.localizedDescription)
+            SFDbLogger.error(port: port, type: .none, msgs: "获取userDb", "失败", error.localizedDescription)
             return nil
         }
     }

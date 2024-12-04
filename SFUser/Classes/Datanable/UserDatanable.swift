@@ -22,10 +22,11 @@ public protocol UserDatanable: SFLocalDatanable, SFRemoteDatanable {
     var uid: String? {get set}
     /// account
     var account: String? {get set}
-    /// pwd
-    var pwd: String? {get set}
     /// 活跃的
     var isActive: Bool? {get set}
+    /// pwd
+    var pwd: String? {get set}
+    
     
     // # 基础信息
     /// 昵称
@@ -62,5 +63,34 @@ extension UserDatanable {
             gender = newValue.rawValue
         }
     }
+    public var birthdayDate: Date? {
+        get {
+            guard let birthday = birthday else { return nil }
+            return SFDateFormatter.yyyyMMdd.date(from: birthday)
+        }
+        set {
+            guard let newValue = newValue else {
+                birthday = nil
+                return
+            }
+            birthday = SFDateFormatter.yyyyMMdd.string(from: newValue)
+        }
+    }
 }
  
+extension UserDatanable {
+    /// 生成随机账号
+    public static func generateRandomAccount(num: Int = 6) -> String {
+        let characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+        return String((0..<num).compactMap { _ in characters.randomElement() })
+    }
+    
+    /// 生成唯一的随机账号
+    public static func generateUniqueAccount(existingAccounts: Set<String>, num: Int = 6) -> String {
+        var newAccount: String
+        repeat {
+            newAccount = generateRandomAccount(num: num)
+        } while existingAccounts.contains(newAccount)
+        return newAccount
+    }
+}
