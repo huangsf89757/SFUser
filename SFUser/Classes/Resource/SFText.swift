@@ -31,9 +31,21 @@ extension SFText {
         public static var gender_unknown: String { text(name: "gender_unknown") }
         public static var info: String { text(name: "info") }
         public static var sign_action_in: String { text(name: "sign_action_in") }
+        public static var sign_action_in_loading: String { text(name: "sign_action_in_loading") }
+        public static var sign_action_in_success: String { text(name: "sign_action_in_success") }
+        public static var sign_action_in_failure: String { text(name: "sign_action_in_failure") }
         public static var sign_action_out: String { text(name: "sign_action_out") }
+        public static var sign_action_out_loading: String { text(name: "sign_action_out_loading") }
+        public static var sign_action_out_success: String { text(name: "sign_action_out_success") }
+        public static var sign_action_out_failure: String { text(name: "sign_action_out_failure") }
         public static var sign_action_forgetPwd: String { text(name: "sign_action_forgetPwd") }
+        public static var sign_action_forgetPwd_loading: String { text(name: "sign_action_forgetPwd_loading") }
+        public static var sign_action_forgetPwd_success: String { text(name: "sign_action_forgetPwd_success") }
+        public static var sign_action_forgetPwd_failure: String { text(name: "sign_action_forgetPwd_failure") }
         public static var sign_action_sendCode: String { text(name: "sign_action_sendCode") }
+        public static var sign_action_sendCode_loading: String { text(name: "sign_action_sendCode_loading") }
+        public static var sign_action_sendCode_success: String { text(name: "sign_action_sendCode_success") }
+        public static var sign_action_sendCode_failure: String { text(name: "sign_action_sendCode_failure") }
         public static var info_account: String { text(name: "info_account") }
         public static var info_address: String { text(name: "info_address") }
         public static var info_avatar: String { text(name: "info_avatar") }

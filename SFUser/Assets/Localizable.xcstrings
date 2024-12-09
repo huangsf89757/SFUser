@@ -266,7 +266,40 @@
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "忘记密码？"
+            "value" : "找回密码"
+          }
+        }
+      }
+    },
+    "sign_action_forgetPwd_failure" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未能找回"
+          }
+        }
+      }
+    },
+    "sign_action_forgetPwd_loading" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在找回"
+          }
+        }
+      }
+    },
+    "sign_action_forgetPwd_success" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "成功找回"
           }
         }
       }
@@ -289,6 +322,39 @@
         }
       }
     },
+    "sign_action_in_failure" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "登录失败"
+          }
+        }
+      }
+    },
+    "sign_action_in_loading" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在登录"
+          }
+        }
+      }
+    },
+    "sign_action_in_success" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "登录成功"
+          }
+        }
+      }
+    },
     "sign_action_out" : {
       "comment" : "登出",
       "extractionState" : "manual",
@@ -307,6 +373,39 @@
         }
       }
     },
+    "sign_action_out_failure" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "登出失败"
+          }
+        }
+      }
+    },
+    "sign_action_out_loading" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在登出"
+          }
+        }
+      }
+    },
+    "sign_action_out_success" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "登出成功"
+          }
+        }
+      }
+    },
     "sign_action_sendCode" : {
       "comment" : "发送验证码",
       "extractionState" : "manual",
@@ -315,6 +414,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "发送验证码"
+          }
+        }
+      }
+    },
+    "sign_action_sendCode_failure" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "发送失败"
+          }
+        }
+      }
+    },
+    "sign_action_sendCode_loading" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正在发送验证码"
+          }
+        }
+      }
+    },
+    "sign_action_sendCode_success" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "发送成功"
           }
         }
       }

@@ -133,14 +133,28 @@ extension SignVC {
                 return
             }
             if account.sf.isRegex(type: .phone) {
-                SFDataService.shared.request { provider in
+                SFDataService.shared.request(hud: (SFText.User.sign_action_in_loading,
+                                                   SFText.User.sign_action_in_success,
+                                                   SFText.User.sign_action_in_failure),
+                                             apiTask: { provider in
                     return await (provider as? SFUserApi)?.signIn(phone: account, code: code)
-                }
+                }, success: { data, msg in
+                    guard let user = data as? UserDatanable else { return }
+                }, failure: { msg in
+                    
+                })
             }
             else if account.sf.isRegex(type: .email) {
-                SFDataService.shared.request { provider in
+                SFDataService.shared.request(hud: (SFText.User.sign_action_in_loading,
+                                                   SFText.User.sign_action_in_success,
+                                                   SFText.User.sign_action_in_failure),
+                                             apiTask: { provider in
                     return await (provider as? SFUserApi)?.signIn(email: account, code: code)
-                }
+                }, success: { data, msg in
+                    guard let user = data as? UserDatanable else { return }
+                }, failure: { msg in
+                    
+                })
             }
             else {
                 SFToast.show(SFText.User.sign_hint_account)
@@ -161,19 +175,40 @@ extension SignVC {
                 return
             }
             if account.sf.isRegex(type: .phone) {
-                SFDataService.shared.request { provider in
+                SFDataService.shared.request(hud: (SFText.User.sign_action_in_loading,
+                                                   SFText.User.sign_action_in_success,
+                                                   SFText.User.sign_action_in_failure),
+                                             apiTask: { provider in
                     return await (provider as? SFUserApi)?.signIn(phone: account, pwd: pwd)
-                }
+                }, success: { data, msg in
+                    guard let user = data as? UserDatanable else { return }
+                }, failure: { msg in
+                    
+                })
             }
             else if account.sf.isRegex(type: .email) {
-                SFDataService.shared.request { provider in
+                SFDataService.shared.request(hud: (SFText.User.sign_action_in_loading,
+                                                   SFText.User.sign_action_in_success,
+                                                   SFText.User.sign_action_in_failure),
+                                             apiTask: { provider in
                     return await (provider as? SFUserApi)?.signIn(email: account, pwd: pwd)
-                }
+                }, success: { data, msg in
+                    guard let user = data as? UserDatanable else { return }
+                }, failure: { msg in
+                    
+                })
             }
             else {
-                SFDataService.shared.request { provider in
+                SFDataService.shared.request(hud: (SFText.User.sign_action_in_loading,
+                                                   SFText.User.sign_action_in_success,
+                                                   SFText.User.sign_action_in_failure),
+                                             apiTask: { provider in
                     return await (provider as? SFUserApi)?.signIn(account: account, pwd: pwd)
-                }
+                }, success: { data, msg in
+                    guard let user = data as? UserDatanable else { return }
+                }, failure: { msg in
+                    
+                })
             }
         }
     }
