@@ -22,8 +22,8 @@ public protocol UserDatanable: SFLocalDatanable, SFRemoteDatanable {
     var uid: String? {get set}
     /// account
     var account: String? {get set}
-    /// 活跃的
-    var isActive: Bool? {get set}
+    /// state
+    var state: Int? {get set}
     /// pwd
     var pwd: String? {get set}
     
@@ -55,6 +55,14 @@ public protocol UserDatanable: SFLocalDatanable, SFRemoteDatanable {
 }
  
 extension UserDatanable {
+    public var stateEnum: AccountState {
+        get {
+            AccountState(rawValue: state ?? 0) ?? .inactive
+        }
+        set {
+            state = newValue.rawValue
+        }
+    }
     public var genderEnum: Gender {
         get {
             Gender(rawValue: gender ?? 0) ?? .unknown

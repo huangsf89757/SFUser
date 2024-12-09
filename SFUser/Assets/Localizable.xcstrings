@@ -97,6 +97,54 @@
         }
       }
     },
+    "info_accountState" : {
+      "comment" : "账户状态",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "账户状态"
+          }
+        }
+      }
+    },
+    "info_accountState_active" : {
+      "comment" : "活跃中",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "活跃中"
+          }
+        }
+      }
+    },
+    "info_accountState_delete" : {
+      "comment" : "已注销",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已注销"
+          }
+        }
+      }
+    },
+    "info_accountState_inactive" : {
+      "comment" : "不活跃",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "不活跃"
+          }
+        }
+      }
+    },
     "info_address" : {
       "comment" : "所在地",
       "extractionState" : "manual",

@@ -21,6 +21,10 @@ extension SFText {
             NSLocalizedString(name, bundle: Self.bundle ?? .main, comment: name)
         }
         
+        public static var info_accountState: String { text(name: "info_accountState") }
+        public static var info_accountState_inactive: String { text(name: "info_accountState_inactive") }
+        public static var info_accountState_active: String { text(name: "info_accountState_active") }
+        public static var info_accountState_delete: String { text(name: "info_accountState_delete") }
         public static var gender: String { text(name: "gender") }
         public static var gender_female: String { text(name: "gender_female") }
         public static var gender_male: String { text(name: "gender_male") }
