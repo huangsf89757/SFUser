@@ -14,6 +14,8 @@ import SFBase
 import SFUI
 // Business
 import SFBusiness
+// Server
+import SFLogger
 
 // MARK: - SignVC
 public class SignVC: SFScrollViewController {
@@ -120,22 +122,29 @@ extension SignVC {
     @objc private func signBtnAction() {
         switch mode {
         case .code:
-            SFToast.show("开发中")
-//            let account = pageView.codeView.field.accountField.textField.text ?? ""
-//            let code = pageView.codeView.field.codeField.textField.text ?? ""
-//            if account.isEmpty {
-//                SFToast.show(SFText.User.sign_hint_account)
-//                return
-//            }
-//            if account.sf.isRegex(type: .phone) {
-//                
-//            }
-//            else if account.sf.isRegex(type: .email) {
-//                
-//            }
-//            else {
-//                
-//            }
+            let account = pageView.codeView.field.accountField.textField.text ?? ""
+            let code = pageView.codeView.field.codeField.textField.text ?? ""
+            if account.isEmpty {
+                SFToast.show(SFText.User.sign_hint_account)
+                return
+            }
+            if code.isEmpty {
+                SFToast.show(SFText.User.sign_hint_code)
+                return
+            }
+            if account.sf.isRegex(type: .phone) {
+                SFDataService.shared.request { provider in
+                    return await (provider as? SFUserApi)?.signIn(phone: account, code: code)
+                }
+            }
+            else if account.sf.isRegex(type: .email) {
+                SFDataService.shared.request { provider in
+                    return await (provider as? SFUserApi)?.signIn(email: account, code: code)
+                }
+            }
+            else {
+                SFToast.show(SFText.User.sign_hint_account)
+            }
         case .pwd:
             let account = pageView.pwdView.field.accountField.textField.text ?? ""
             let pwd = pageView.pwdView.field.pwdField.textField.text ?? ""
@@ -152,13 +161,19 @@ extension SignVC {
                 return
             }
             if account.sf.isRegex(type: .phone) {
-                
+                SFDataService.shared.request { provider in
+                    return await (provider as? SFUserApi)?.signIn(phone: account, pwd: pwd)
+                }
             }
             else if account.sf.isRegex(type: .email) {
-                
+                SFDataService.shared.request { provider in
+                    return await (provider as? SFUserApi)?.signIn(email: account, pwd: pwd)
+                }
             }
             else {
-                
+                SFDataService.shared.request { provider in
+                    return await (provider as? SFUserApi)?.signIn(account: account, pwd: pwd)
+                }
             }
         }
     }
