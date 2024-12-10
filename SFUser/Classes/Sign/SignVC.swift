@@ -178,12 +178,17 @@ extension SignVC {
                 SFToast.show(SFText.User.sign_hint_pwd_format)
                 return
             }
+            guard let encryptPwd = pwd.sf.sha256() else {
+                SFLogger.error(msgs: "pwd.sf.sha256()失败")
+                SFToast.show(SFText.User.sign_hint_pwd_format)
+                return
+            }
             if account.sf.isRegex(type: .phone) {
                 SFDataService.shared.request(hud: (loading: SFText.User.sign_action_in_loading,
                                                    success: SFText.User.sign_action_in_success,
                                                    failure: SFText.User.sign_action_in_failure),
                                              apiTask: { provider in
-                    return await (provider as? SFUserApi)?.signIn(phone: account, pwd: pwd)
+                    return await (provider as? SFUserApi)?.signIn(phone: account, pwd: encryptPwd)
                 }, success: { data, msg in
                     guard let user = data as? UserDatanable else { return }
                 }, failure: { msg in
@@ -195,7 +200,7 @@ extension SignVC {
                                                    success: SFText.User.sign_action_in_success,
                                                    failure: SFText.User.sign_action_in_failure),
                                              apiTask: { provider in
-                    return await (provider as? SFUserApi)?.signIn(email: account, pwd: pwd)
+                    return await (provider as? SFUserApi)?.signIn(email: account, pwd: encryptPwd)
                 }, success: { data, msg in
                     guard let user = data as? UserDatanable else { return }
                 }, failure: { msg in
@@ -207,7 +212,7 @@ extension SignVC {
                                                    success: SFText.User.sign_action_in_success,
                                                    failure: SFText.User.sign_action_in_failure),
                                              apiTask: { provider in
-                    return await (provider as? SFUserApi)?.signIn(account: account, pwd: pwd)
+                    return await (provider as? SFUserApi)?.signIn(account: account, pwd: encryptPwd)
                 }, success: { data, msg in
                     guard let user = data as? UserDatanable else { return }
                 }, failure: { msg in
