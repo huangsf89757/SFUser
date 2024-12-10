@@ -30,6 +30,7 @@ public class PwdField: SFView {
     }()
     public private(set) lazy var textField: SFTextField = {
         return SFTextField().then { view in
+            view.isSecureTextEntry = true
             view.placeholder = SFText.User.sign_hint_pwd
             view.placeholderColor = SFColor.UI.placeholder
             view.clearButtonMode = .whileEditing

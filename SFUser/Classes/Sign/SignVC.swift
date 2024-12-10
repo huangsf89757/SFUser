@@ -120,6 +120,10 @@ public class SignVC: SFScrollViewController {
 // MARK: - Action
 extension SignVC {
     @objc private func signBtnAction() {
+        guard agreementView.checkBoxBtn.isSelected else {
+            SFToast.show(String(format: SFText.Business.agreement_hint, SFText.Business.agreement_policy, SFText.Business.agreement_term))
+            return
+        }
         switch mode {
         case .code:
             let account = pageView.codeView.field.accountField.textField.text ?? ""
