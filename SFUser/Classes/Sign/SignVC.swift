@@ -133,9 +133,9 @@ extension SignVC {
                 return
             }
             if account.sf.isRegex(type: .phone) {
-                SFDataService.shared.request(hud: (SFText.User.sign_action_in_loading,
-                                                   SFText.User.sign_action_in_success,
-                                                   SFText.User.sign_action_in_failure),
+                SFDataService.shared.request(hud: (loading: SFText.User.sign_action_in_loading,
+                                                   success: SFText.User.sign_action_in_success,
+                                                   failure: SFText.User.sign_action_in_failure),
                                              apiTask: { provider in
                     return await (provider as? SFUserApi)?.signIn(phone: account, code: code)
                 }, success: { data, msg in
@@ -145,9 +145,9 @@ extension SignVC {
                 })
             }
             else if account.sf.isRegex(type: .email) {
-                SFDataService.shared.request(hud: (SFText.User.sign_action_in_loading,
-                                                   SFText.User.sign_action_in_success,
-                                                   SFText.User.sign_action_in_failure),
+                SFDataService.shared.request(hud: (loading: SFText.User.sign_action_in_loading,
+                                                   success: SFText.User.sign_action_in_success,
+                                                   failure: SFText.User.sign_action_in_failure),
                                              apiTask: { provider in
                     return await (provider as? SFUserApi)?.signIn(email: account, code: code)
                 }, success: { data, msg in
@@ -175,9 +175,9 @@ extension SignVC {
                 return
             }
             if account.sf.isRegex(type: .phone) {
-                SFDataService.shared.request(hud: (SFText.User.sign_action_in_loading,
-                                                   SFText.User.sign_action_in_success,
-                                                   SFText.User.sign_action_in_failure),
+                SFDataService.shared.request(hud: (loading: SFText.User.sign_action_in_loading,
+                                                   success: SFText.User.sign_action_in_success,
+                                                   failure: SFText.User.sign_action_in_failure),
                                              apiTask: { provider in
                     return await (provider as? SFUserApi)?.signIn(phone: account, pwd: pwd)
                 }, success: { data, msg in
@@ -187,9 +187,9 @@ extension SignVC {
                 })
             }
             else if account.sf.isRegex(type: .email) {
-                SFDataService.shared.request(hud: (SFText.User.sign_action_in_loading,
-                                                   SFText.User.sign_action_in_success,
-                                                   SFText.User.sign_action_in_failure),
+                SFDataService.shared.request(hud: (loading: SFText.User.sign_action_in_loading,
+                                                   success: SFText.User.sign_action_in_success,
+                                                   failure: SFText.User.sign_action_in_failure),
                                              apiTask: { provider in
                     return await (provider as? SFUserApi)?.signIn(email: account, pwd: pwd)
                 }, success: { data, msg in
@@ -199,9 +199,9 @@ extension SignVC {
                 })
             }
             else {
-                SFDataService.shared.request(hud: (SFText.User.sign_action_in_loading,
-                                                   SFText.User.sign_action_in_success,
-                                                   SFText.User.sign_action_in_failure),
+                SFDataService.shared.request(hud: (loading: SFText.User.sign_action_in_loading,
+                                                   success: SFText.User.sign_action_in_success,
+                                                   failure: SFText.User.sign_action_in_failure),
                                              apiTask: { provider in
                     return await (provider as? SFUserApi)?.signIn(account: account, pwd: pwd)
                 }, success: { data, msg in
