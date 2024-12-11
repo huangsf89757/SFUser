@@ -19,14 +19,19 @@ public class AccountPwdField: GroupField {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         customUI()
+        self.addToolbarPreviousNextAllowedClassIfNot()
     }
     
     // MARK: ui
     public private(set) lazy var accountField: AccountField = {
-        return AccountField()
+        return AccountField().then { view in
+            view.textField.tag = 1
+        }
     }()
     public private(set) lazy var pwdField: PwdField = {
-        return PwdField()
+        return PwdField().then { view in
+            view.textField.tag = 2
+        }
     }()
     public private(set) lazy var dividerView: SFView = {
         return SFView().then { view in

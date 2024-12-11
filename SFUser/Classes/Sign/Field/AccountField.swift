@@ -12,6 +12,8 @@ import SFExtension
 import SFBase
 // UI
 import SFUI
+// Third
+import IQKeyboardManagerSwift
 
 // MARK: - AccountField
 public class AccountField: SFView {
@@ -19,6 +21,7 @@ public class AccountField: SFView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         customUI()
+        self.addToolbarPreviousNextAllowedClassIfNot()
     }
     
     // MARK: ui
