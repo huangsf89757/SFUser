@@ -45,11 +45,17 @@ public class SignPageView: SFScrollView {
     
     // MARK: ui
     public private(set) lazy var codeView: CodeContentView = {
-        return CodeContentView()
+        return CodeContentView().then { view in
+            view.field.accountField.textField.tag = 1
+            view.field.codeField.textField.tag = 2
+        }
     }()
     
     public private(set) lazy var pwdView: PwdContentView = {
-        return PwdContentView()
+        return PwdContentView().then { view in
+            view.field.accountField.textField.tag = 3
+            view.field.pwdField.textField.tag = 4
+        }
     }()
     
     private func customUI() {

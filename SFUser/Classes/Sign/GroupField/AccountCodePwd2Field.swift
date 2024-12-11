@@ -23,24 +23,16 @@ public class AccountCodePwd2Field: GroupField {
     
     // MARK: ui
     public private(set) lazy var accountField: AccountField = {
-        return AccountField().then { view in
-            view.textField.tag = 1
-        }
+        return AccountField()
     }()
     public private(set) lazy var codeField: CodeField = {
-        return CodeField().then { view in
-            view.textField.tag = 2
-        }
+        return CodeField()
     }()
     public private(set) lazy var pwdField: PwdField = {
-        return PwdField().then { view in
-            view.textField.tag = 3
-        }
+        return PwdField()
     }()
     public private(set) lazy var repwdField: PwdField = {
-        return PwdField().then { view in
-            view.textField.tag = 4
-        }
+        return PwdField()
     }()
     public private(set) lazy var dividerView1: SFView = {
         return SFView().then { view in
