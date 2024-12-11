@@ -21,7 +21,6 @@ public class AccountField: SFView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         customUI()
-        self.addToolbarPreviousNextAllowedClassIfNot()
     }
     
     // MARK: ui

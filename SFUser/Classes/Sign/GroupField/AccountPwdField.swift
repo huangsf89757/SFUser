@@ -19,7 +19,6 @@ public class AccountPwdField: GroupField {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         customUI()
-        self.addToolbarPreviousNextAllowedClassIfNot()
     }
     
     // MARK: ui
