@@ -15,10 +15,57 @@ import SFUI
 
 // MARK: - CodeField
 public class CodeField: SFView {
+    // MARK: block
+    public var sendCodeBlock: (() async -> Bool)?
+    
+    // MARK: var
+    var hasSendCode = false
+    var lastSecond = 60 {
+        didSet {
+            var title: String?
+            if lastSecond < 60 {
+                sendCodeBtn.isUserInteractionEnabled = false
+                title = String(format: SFText.User.sign_action_sendCode_countdown, lastSecond)
+                sendCodeBtn.setTitleColor(SFColor.UI.placeholder, for: .normal)
+            }
+            else {
+                sendCodeBtn.isUserInteractionEnabled = true
+                if hasSendCode {
+                    title = SFText.User.sign_action_sendCode_retry
+                } else {
+                    title = SFText.User.sign_action_sendCode
+                }
+                sendCodeBtn.setTitleColor(SFColor.UI.theme, for: .normal)
+            }
+            sendCodeBtn.setTitle(title, for: .normal)
+        }
+    }
+    var timer: Timer!
+    
     // MARK: life cycle
     public override init(frame: CGRect) {
         super.init(frame: frame)
         customUI()
+        timer = Timer(timeInterval: 1, repeats: true, block: { [weak self] timer in
+            self?.lastSecond -= 1
+            guard let lastSecond = self?.lastSecond else { return }
+            if lastSecond < 0 {
+                self?.hasSendCode = true
+                self?.lastSecond = 60
+                timer.fireDate = Date.distantFuture
+            }
+        })
+        RunLoop.current.add(timer, forMode: .common)
+        let distance = SFUserDefault.smsCodeDate.distance(to: Date())
+        if distance < 60 {
+            hasSendCode = true
+            lastSecond = Int(distance)
+            timer.fireDate = Date.distantPast
+        } else {
+            hasSendCode = false
+            lastSecond = 60
+            timer.fireDate = Date.distantFuture
+        }
     }
     
     // MARK: ui
@@ -75,6 +122,13 @@ public class CodeField: SFView {
 // MARK: - action
 extension CodeField {
     @objc private func sendCodeBtnClicked() {
-        
+        Task {
+            let isSuccess = await sendCodeBlock?()
+            if isSuccess == true {
+                lastSecond = 60
+                SFUserDefault.smsCodeDate = Date()
+                timer.fireDate = Date.distantPast
+            }
+        }
     }
 }

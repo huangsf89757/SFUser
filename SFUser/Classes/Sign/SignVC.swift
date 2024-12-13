@@ -53,6 +53,8 @@ public class SignVC: SFScrollViewController {
     }()
     private(set) lazy var pageView: SignPageView = {
         return SignPageView().then { view in
+            view.codeView.field.accountField.textField.text = SFUserDefault.account
+            view.pwdView.field.accountField.textField.text = SFUserDefault.account
             view.pageDidChangedBlock = {
                 [weak self] pageView, index in
                 self?.modeView.select(index: index, animated: true)
@@ -62,6 +64,14 @@ public class SignVC: SFScrollViewController {
                 [weak self] in
                 let vc = ForgetPwdVC()
                 self?.navigationController?.pushViewController(vc, animated: true)
+            }
+            view.codeView.field.codeField.sendCodeBlock = {
+                [weak self] in
+                let success = await self?.dp_sendSmsCode() ?? false
+                if success {
+                    SFUserDefault.account = self?.pageView.codeView.field.accountField.textField.text ?? ""
+                }
+                return success
             }
         }
     }()
@@ -120,6 +130,41 @@ public class SignVC: SFScrollViewController {
 // MARK: - Action
 extension SignVC {
     @objc private func signBtnAction() {
+        dp_signIn()
+    }
+}
+
+// MARK: - DataProvider
+extension SignVC {
+    private func dp_sendSmsCode() async -> Bool {
+        let account = pageView.codeView.field.accountField.textField.text ?? ""
+        if account.isEmpty {
+            SFToast.show(SFText.User.sign_hint_account)
+            return false
+        }
+        var type: SmsCodeType.SubType?
+        if account.sf.isRegex(type: .phone) {
+            type = .phone
+        }
+        else if account.sf.isRegex(type: .email) {
+            type = .email
+        }
+        else {
+            type = nil
+        }
+        guard let type = type else {
+            SFToast.show(SFText.User.sign_hint_account)
+            return false
+        }
+        let res = await SFDataService.shared.request(hud: (loading: SFText.User.sign_action_sendCode_loading,
+                                                           success: SFText.User.sign_action_sendCode_success,
+                                                           failure: SFText.User.sign_action_sendCode_failure)) { provider in
+            return await (provider as? SFUserApi)?.sendSmsCode(type: .sign(type))
+        }
+        return res.success
+    }
+    
+    private func dp_signIn() {
         guard agreementView.checkBoxBtn.isSelected else {
             SFToast.show(String(format: SFText.Business.agreement_hint, SFText.Business.agreement_policy, SFText.Business.agreement_term))
             return
@@ -137,28 +182,22 @@ extension SignVC {
                 return
             }
             if account.sf.isRegex(type: .phone) {
-                SFDataService.shared.request(hud: (loading: SFText.User.sign_action_in_loading,
-                                                   success: SFText.User.sign_action_in_success,
-                                                   failure: SFText.User.sign_action_in_failure),
-                                             apiTask: { provider in
-                    return await (provider as? SFUserApi)?.signIn(phone: account, code: code)
-                }, success: { data, msg in
-                    guard let user = data as? UserDatanable else { return }
-                }, failure: { msg in
-                    
-                })
+                Task {
+                    let res = await SFDataService.shared.request(hud: (loading: SFText.User.sign_action_in_loading,
+                                                                       success: SFText.User.sign_action_in_success,
+                                                                       failure: SFText.User.sign_action_in_failure)) { provider in
+                        return await (provider as? SFUserApi)?.signIn(phone: account, code: code)
+                    }
+                }
             }
             else if account.sf.isRegex(type: .email) {
-                SFDataService.shared.request(hud: (loading: SFText.User.sign_action_in_loading,
-                                                   success: SFText.User.sign_action_in_success,
-                                                   failure: SFText.User.sign_action_in_failure),
-                                             apiTask: { provider in
-                    return await (provider as? SFUserApi)?.signIn(email: account, code: code)
-                }, success: { data, msg in
-                    guard let user = data as? UserDatanable else { return }
-                }, failure: { msg in
-                    
-                })
+                Task {
+                    let res = await SFDataService.shared.request(hud: (loading: SFText.User.sign_action_in_loading,
+                                                                       success: SFText.User.sign_action_in_success,
+                                                                       failure: SFText.User.sign_action_in_failure)){ provider in
+                        return await (provider as? SFUserApi)?.signIn(email: account, code: code)
+                    }
+                }
             }
             else {
                 SFToast.show(SFText.User.sign_hint_account)
@@ -184,40 +223,31 @@ extension SignVC {
                 return
             }
             if account.sf.isRegex(type: .phone) {
-                SFDataService.shared.request(hud: (loading: SFText.User.sign_action_in_loading,
-                                                   success: SFText.User.sign_action_in_success,
-                                                   failure: SFText.User.sign_action_in_failure),
-                                             apiTask: { provider in
-                    return await (provider as? SFUserApi)?.signIn(phone: account, pwd: encryptPwd)
-                }, success: { data, msg in
-                    guard let user = data as? UserDatanable else { return }
-                }, failure: { msg in
-                    
-                })
+                Task {
+                    let res = await SFDataService.shared.request(hud: (loading: SFText.User.sign_action_in_loading,
+                                                                       success: SFText.User.sign_action_in_success,
+                                                                       failure: SFText.User.sign_action_in_failure)){ provider in
+                        return await (provider as? SFUserApi)?.signIn(phone: account, pwd: encryptPwd)
+                    }
+                }
             }
             else if account.sf.isRegex(type: .email) {
-                SFDataService.shared.request(hud: (loading: SFText.User.sign_action_in_loading,
-                                                   success: SFText.User.sign_action_in_success,
-                                                   failure: SFText.User.sign_action_in_failure),
-                                             apiTask: { provider in
-                    return await (provider as? SFUserApi)?.signIn(email: account, pwd: encryptPwd)
-                }, success: { data, msg in
-                    guard let user = data as? UserDatanable else { return }
-                }, failure: { msg in
-                    
-                })
+                Task {
+                    let res = await SFDataService.shared.request(hud: (loading: SFText.User.sign_action_in_loading,
+                                                                       success: SFText.User.sign_action_in_success,
+                                                                       failure: SFText.User.sign_action_in_failure)){ provider in
+                        return await (provider as? SFUserApi)?.signIn(email: account, pwd: encryptPwd)
+                    }
+                }
             }
             else {
-                SFDataService.shared.request(hud: (loading: SFText.User.sign_action_in_loading,
-                                                   success: SFText.User.sign_action_in_success,
-                                                   failure: SFText.User.sign_action_in_failure),
-                                             apiTask: { provider in
-                    return await (provider as? SFUserApi)?.signIn(account: account, pwd: encryptPwd)
-                }, success: { data, msg in
-                    guard let user = data as? UserDatanable else { return }
-                }, failure: { msg in
-                    
-                })
+                Task {
+                    let res = await SFDataService.shared.request(hud: (loading: SFText.User.sign_action_in_loading,
+                                                                       success: SFText.User.sign_action_in_success,
+                                                                       failure: SFText.User.sign_action_in_failure)){ provider in
+                        return await (provider as? SFUserApi)?.signIn(account: account, pwd: encryptPwd)
+                    }
+                }
             }
         }
     }

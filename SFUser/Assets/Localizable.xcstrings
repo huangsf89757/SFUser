@@ -418,6 +418,18 @@
         }
       }
     },
+    "sign_action_sendCode_countdown" : {
+      "comment" : "%1$02d秒",
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$02d秒"
+          }
+        }
+      }
+    },
     "sign_action_sendCode_failure" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -440,6 +452,17 @@
         }
       }
     },
+    "sign_action_sendCode_retry" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "重试"
+          }
+        }
+      }
+    },
     "sign_action_sendCode_success" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -447,18 +470,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "发送成功"
-          }
-        }
-      }
-    },
-    "sign_countdown" : {
-      "comment" : "%1$@秒",
-      "extractionState" : "manual",
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@秒"
           }
         }
       }
