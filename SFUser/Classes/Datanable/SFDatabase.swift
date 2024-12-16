@@ -38,7 +38,7 @@ extension UserDatanable {
             let db = try Database(at: dataURL)
             return db
         } catch {
-            SFDbLogger.error(port: port, type: .none, msgs: "获取userDb", "失败", error.localizedDescription)
+            SFDatabaseLogger.error(port: port, type: .none, msgs: "获取userDb", "失败", error.localizedDescription)
             return nil
         }
     }
