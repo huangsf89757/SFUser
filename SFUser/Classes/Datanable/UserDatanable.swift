@@ -19,11 +19,11 @@ public protocol UserDatanable: SFLocalDatanable, SFRemoteDatanable {
     // MARK: var
     // # 账号信息
     /// uid
-    var uid: String? {get set}
+    var uid: String {get set}
     /// account
     var account: String? {get set}
     /// state
-    var state: Int? {get set}
+    var state: Int {get set}
     /// pwd
     var pwd: String? {get set}
     
@@ -32,7 +32,7 @@ public protocol UserDatanable: SFLocalDatanable, SFRemoteDatanable {
     /// 昵称
     var nickname: String? {get set}
     /// 性别
-    var gender: Int? {get set}
+    var gender: Int {get set}
     
     /// 头像
     var avatar: String? {get set}
@@ -57,7 +57,7 @@ public protocol UserDatanable: SFLocalDatanable, SFRemoteDatanable {
 extension UserDatanable {
     public var stateEnum: AccountState {
         get {
-            AccountState(rawValue: state ?? 0) ?? .inactive
+            AccountState(rawValue: state) ?? .inactive
         }
         set {
             state = newValue.rawValue
@@ -65,7 +65,7 @@ extension UserDatanable {
     }
     public var genderEnum: Gender {
         get {
-            Gender(rawValue: gender ?? 0) ?? .unknown
+            Gender(rawValue: gender) ?? .unknown
         }
         set {
             gender = newValue.rawValue

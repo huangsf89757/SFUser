@@ -28,7 +28,6 @@ extension UserDatanable {
     }
     /// 获取user数据库
     public func getDb(port: SFPort) -> Database? {
-        guard let uid = uid else { return nil }
         do {
             let documentsDirectory = try FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
             let environmentUrl = documentsDirectory.appendingPathComponent(SFEnvironment.cur.path)
